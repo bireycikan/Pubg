@@ -10,7 +10,7 @@ In order to use app;
 - Define "api_key" key
 - Simply paste your api key as "api_key" value
 
-# Improvements
+## Improvements
 
 All improvements are welcome. Thank you :)
 
