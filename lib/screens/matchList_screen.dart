@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pubg/screens/matchDetails_screen.dart';
 import 'package:pubg/services/player.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:pubg/components/playerMatches.dart';
 
 class MatchListScreen extends StatefulWidget {
   MatchListScreen({@required this.player, @required this.playerObject});
@@ -16,12 +17,13 @@ class _MatchListScreenState extends State<MatchListScreen> {
   bool _isFetching = false;
   List<FlatButton> _generatedMatchList = [];
   String _playerName;
+  bool _anyMatch = false;
 
   void getMatches() async {
     List<dynamic> playerMatches =
         await widget.player.getPlayerMatches(playerObject: widget.playerObject);
 
-    if (playerMatches != null) {
+    if (playerMatches.isNotEmpty) {
       setState(() {
         for (var i = 0; i < playerMatches.length; i++) {
           _generatedMatchList.add(FlatButton(
@@ -40,6 +42,12 @@ class _MatchListScreenState extends State<MatchListScreen> {
           ));
         }
         _playerName = widget.player.getPlayerName;
+        _anyMatch = true;
+        _isFetching = false;
+      });
+    } else {
+      setState(() {
+        _anyMatch = false;
         _isFetching = false;
       });
     }
@@ -70,39 +78,22 @@ class _MatchListScreenState extends State<MatchListScreen> {
         child: ModalProgressHUD(
           inAsyncCall: _isFetching,
           child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(
-                  height: 20.0,
-                ),
-                Text(
-                  'Played matches by ${_isFetching ? '...' : _playerName}',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Flexible(
-                  child: ListView(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.all(10.0),
-                    children: _isFetching ? [] : _generatedMatchList,
-                  ),
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 10.0, bottom: 20.0),
-                      child: Text(
-                        '*tap on a match to see more detail...',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+              child: _anyMatch
+                  ? PlayerMatches(
+                      isFetching: _isFetching,
+                      playerName: _playerName,
+                      generatedMatchList: _generatedMatchList)
+                  : Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 10.0, left: 10.0),
+                        child: Text(
+                          '${_isFetching ? '' : 'There is no any played matches in 14 days for this player...'}',
+                          style: TextStyle(
+                              fontSize: 20.0, fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+                    )),
         ),
       ),
     );
