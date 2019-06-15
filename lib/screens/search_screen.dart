@@ -48,7 +48,7 @@ class _SearchPlayerScreenState extends State<SearchPlayerScreen> {
           'PUBG Player Search Engine',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 30.0,
+            fontSize: 25.0,
           ),
         ),
         backgroundColor: Color(0xFFF2A900),
@@ -64,18 +64,20 @@ class _SearchPlayerScreenState extends State<SearchPlayerScreen> {
                 SizedBox(
                   height: 40.0,
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: 30.0, right: 30.0),
-                  child: Text(
-                    'Search Your Favourite Player...',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30.0,
+                Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 30.0, right: 30.0),
+                    child: Text(
+                      'Search Your Favourite Player...',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 30.0,
+                  height: 20.0,
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0),
@@ -105,29 +107,31 @@ class _SearchPlayerScreenState extends State<SearchPlayerScreen> {
                 SizedBox(
                   height: 15.0,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(right: 30.0),
-                      child: RaisedButton(
-                        splashColor: Color(0xFFF2A900),
-                        onPressed: () {
-                          setState(() {
-                            _isFetching = true;
-                          });
-                          submit();
-                        },
-                        child: Text(
-                          'Search player...',
-                          textAlign: TextAlign.center,
+                Flexible(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(right: 30.0),
+                        child: RaisedButton(
+                          splashColor: Color(0xFFF2A900),
+                          onPressed: () {
+                            setState(() {
+                              _isFetching = true;
+                            });
+                            submit();
+                          },
+                          child: Text(
+                            'Search player...',
+                            textAlign: TextAlign.center,
+                          ),
+                          elevation: 10.0,
+                          highlightElevation: 5.0,
+                          disabledElevation: 5.0,
                         ),
-                        elevation: 10.0,
-                        highlightElevation: 5.0,
-                        disabledElevation: 5.0,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 Flexible(
                   child: Padding(

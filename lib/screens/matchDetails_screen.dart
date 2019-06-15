@@ -123,12 +123,24 @@ class _MatchDetailsScreenState extends State<MatchDetailsScreen> {
                   children: _isFetching ? [] : _participants,
                 ),
               ),
-              Text('*select a player to see more detail...'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(left: 10.0),
+                    child: Text(
+                      '*select a player to see more detail...',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
               Padding(
                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: Text(
                   'Selected Participant Details',
                   style: TextStyle(fontSize: 30.0),
+                  textAlign: TextAlign.center,
                 ),
               ),
               Padding(
