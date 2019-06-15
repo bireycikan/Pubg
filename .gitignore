@@ -11,6 +11,9 @@
 
 # Project Related
 secrets.json
+android\key.properties
+android/app/proguard-rules.pro
+android/key.properties
 
 # IntelliJ related
 *.iml
