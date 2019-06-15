@@ -146,36 +146,3 @@ class _SearchPlayerScreenState extends State<SearchPlayerScreen> {
     );
   }
 }
-
-// print(singlePlayer);
-// print('***********************');
-
-// if (singlePlayer != null) {
-//   var matches = await player.getPlayerMatches(
-//       playerObject: singlePlayer);
-//   print(matches);
-//   print('***********************');
-
-//   if (matches != null) {
-//     var singleMatch = await player.getMatchDetails(
-//         singleMatch: matches[1]);
-//     print(singleMatch['data']['attributes']['createdAt']);
-
-//     int participantCount = 0;
-//     List<String> participants = [];
-//     for (var i = 0;
-//         i < singleMatch['included'].length;
-//         i++) {
-//       if (singleMatch['included'][i]['type'] ==
-//           'participant') {
-//         participantCount++;
-//         participants.add(singleMatch['included'][i]
-//             ['attributes']['stats']['name']);
-//       }
-//     }
-//     print('Total participated player: $participantCount');
-//     for (var participant in participants) {
-//       print(participant);
-//     }
-//   }
-// }

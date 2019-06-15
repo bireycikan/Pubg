@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pubg/services/match.dart';
 import 'package:pubg/services/player.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:pubg/components/matchDetail.dart';
+import 'package:pubg/components/participantDetails.dart';
 
 class MatchDetailsScreen extends StatefulWidget {
   MatchDetailsScreen({@required this.player, @required this.matchId});
@@ -161,53 +163,6 @@ class _MatchDetailsScreenState extends State<MatchDetailsScreen> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class MatchDetail extends StatelessWidget {
-  MatchDetail(
-      {@required this.isFetching,
-      @required this.detailName,
-      @required this.detailValue,
-      this.additionalText = ''});
-
-  final bool isFetching;
-  final String detailName;
-  final dynamic detailValue;
-  final String additionalText;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text('$detailName: ', style: TextStyle(fontSize: 15.0)),
-        Text('${isFetching ? '?' : detailValue} $additionalText',
-            style: TextStyle(fontSize: 15.0)),
-      ],
-    );
-  }
-}
-
-class ParticipantDetails extends StatelessWidget {
-  ParticipantDetails(
-      {@required this.detailName,
-      @required this.value,
-      this.additionalText = ''});
-  final String detailName;
-  final dynamic value;
-  final String additionalText;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text('$detailName: ', style: TextStyle(fontSize: 15.0)),
-        Text('${value ?? '...'} $additionalText',
-            style: TextStyle(fontSize: 15.0)),
-      ],
     );
   }
 }
