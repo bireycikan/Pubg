@@ -1,6 +1,6 @@
-# Pubg Player Search Engine
+# Search Engine Pubg Player
 
-Simple Pubg Player Search App made with Flutter
+Simple Search Engine for Pubg Player made with Flutter
 
 ## Getting Started
 
